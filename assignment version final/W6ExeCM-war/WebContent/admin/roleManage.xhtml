@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+<body>
+	<h:form id="MyForm">
+		<div>
+			<h:commandButton id="roleManage" value="roleManage"
+				action="roleManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+
+			<h:commandButton id="staffManage" value="staffManage"
+				action="staffManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+			<h:commandButton id="customerStaffManage" value="customerStaffManage"
+				action="customerStaffManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+			<h:commandButton id="customerManage" value="customerManage"
+				action="customerManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+			
+			 <table class="table table-bordered table-striped">
+                    <!-- For each role in roles ArrayList... --> 
+                    <tr>
+                            <td> 
+                                <h:outputLabel id="Id" value="Id"  />
+                            </td>
+                            <td> 
+                                <h:outputLabel id="roleName" value="roleName"  />
+                            </td>
+          
+                            <td> 
+                                <h:outputLabel id="roleDes" value="roleDes"/>
+                            </td>
+                            
+                     </tr>
+                    
+                    <ui:repeat id="Myrepeat" value="#{roleApplication.roles}"  var="role" varStatus="status"> 
+                        
+                        <tr onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:outPrice').textContent"> 
+                            <td>
+                                <h:outputText value="#{roleApplication.roles.get(status.index).roleId}" id="roleID" /> 
+                                
+                            </td>
+                            
+                            <td> 
+                                <h:outputText id="roleName" value="#{roleApplication.roles.get(status.index).roleName}"  />
+                            </td>
+                            <td>
+                                <h:outputText id="roleDes" value="#{roleApplication.roles.get(status.index).roleDes}"></h:outputText>
+                            </td>
+                            <td>
+                                <h:commandLink value="View | " action="detail.xhtml" disabled="#{roleApplication.roles.get(status.index).roleId == null}">
+                                    <!-- pass the parameter to next page, the param name is roleID, and the value is index + 1. 
+                                    You can get the value from next page using the indexController -->
+                                    <f:param name="roleID" value="#{status.index + 1}"/>
+                                    
+                                </h:commandLink>
+                                <h:commandLink value="Edit | " action="editCustomer.xhtml" disabled="#{roleApplication.roles.get(status.index).roleId == null}">
+                                    <!-- pass the parameter to next page, the param name is roleID, and the value is index + 1. 
+                                    You can get the value from next page using the indexController -->
+                                    <f:param name="roleID"  value="#{status.index + 1}"></f:param> 
+                                </h:commandLink>
+                                
+                                <h:commandLink value="Delete" action="#{removeProperty.removeProperty(roleApplication.roles.get(status.index).roleId)}" disabled="#{roleApplication.roles.get(status.index).roleId == null}">                                
+                                	<f:param name="roleID" value="#{roleController.roleId+1}"/>
+                                	
+                                </h:commandLink>
+                                    
+                                <h:outputText value=" "/>
+                            </td>
+                            
+                        </tr> 
+
+                    </ui:repeat> 
+
+                </table>
+		</div>
+	</h:form>
+	<h2>roleManage</h2>
+</body>
+</html>

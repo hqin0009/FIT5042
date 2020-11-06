@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+</h:head>
+<body> 
+<h:form id="MyForm">
+		<div>
+			<h:commandButton id="roleManage" value="roleManage"
+				action="roleManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+
+			<h:commandButton id="staffManage" value="staffManage"
+				action="staffManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+			<h:commandButton id="customerStaffManage" value="customerStaffManage"
+				action="customerStaffManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+			<h:commandButton id="customerManage" value="customerManage"
+				action="customerManage.xhtml" class="btn btn-primary">
+			</h:commandButton>
+		</div>
+	</h:form>
+	<h2>customerStaffManage</h2>
+</body> 
+</html>

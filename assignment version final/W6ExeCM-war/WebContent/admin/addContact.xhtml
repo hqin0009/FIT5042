@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+
+        <title>#{titleController.pageTitle}</title> 
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    #{titleController.pageTitle} - Add Contact
+                </div>
+            </div>
+            <div>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create"/></h1>
+                
+                <table class="table table-bordered ">
+                
+               
+          			<tr class="#{!contactName.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="contactName" for="contactName" />
+                        </td>
+                        <td>
+                            <h:inputText id="contactName" value="#{contact.contactName}" title="contactName" required="true" requiredMessage="Please enter the contact Name!" pt:placeholder="Andy"/>
+                            <br/>
+                            <h:message for="contactName" class="#{!contactName.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    
+                    </tr>
+                    
+
+                    <tr class="#{!contactAddress.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="contactAddress" for="contactAddress" />
+                        </td>
+                        <td>
+                            <h:inputText id="contactAddress" value="#{contact.contactAddress}" title="contactAddress" required="true" requiredMessage="Please enter the contact address!" pt:placeholder="Dandenong Rd"/>
+                            <br/>
+                            <h:message for="contactAddress" class="#{!contactAddress.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    
+                    </tr>
+        			
+        			<tr class="#{!phoneNumber.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="phoneNumber" for="phoneNumber" />
+                        </td>
+                        <td>
+                            <h:inputText id="phoneNumber" value="#{contact.phoneNumber}" title="phoneNumber" required="true" requiredMessage="Please enter the phone Number!" converterMessage="Please enter number as phone number" pt:placeholder="861345684">
+                            <f:convertNumber integerOnly="true"/>
+                            </h:inputText>
+                            <br/>
+                            <h:message for="phoneNumber" class="#{!phoneNumber.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    
+                    </tr>	
+                    
+                    <tr class="#{!customerId.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="customerId" for="customerId" />
+                        </td>
+                        <td>
+                            <h:inputText id="customerId" value="#{contact.customerId}" title="customerId" required="true" requiredMessage="Please enter the existing customer Id! otherwise,it will not be added successfully" converterMessage="Please enter number as customer ID" pt:placeholder="1">
+                            <f:convertNumber integerOnly="true"/>
+                            </h:inputText>
+                            <br/>
+                            <h:message for="customerId" class="#{!customerId.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    
+                    </tr>
+                </table>
+                
+                <h:commandButton id="submit" value="Submit" action="#{addContact.addContact(contact)}" class="btn btn-primary" >
+                	    <f:param name="contactID" value="#{contactController.contactId+1}"/>
+                </h:commandButton>
+                <h:link id="close" value="Close" outcome="index.xhtml"
+						class="btn btn-primary" />
+            	
+            </h:form>
+			
+        </f:view>
+            </div>
+        </div>
+       
+    </h:body>
+</html>
+

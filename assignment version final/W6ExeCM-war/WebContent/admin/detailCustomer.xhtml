@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Customer Details
+				Customer</div>
+		</div>
+
+		<h:form id="MyFormOne">
+			<table class="table table-bordered ">
+				<tr>
+					<td width="150" valign="top">Id:</td>
+
+					<td valign="bottom"><h:outputLabel id="Id">#{customerController.customer.customerId}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="150" valign="top">customerName:</td>
+
+					<td valign="bottom"><h:outputLabel id="CustomerName">#{customerController.customer.customerName}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">customerAddress:</td>
+
+					<td valign="bottom"><h:outputLabel id="Address">#{customerController.customer.customerAddress}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">updateDate:</td>
+
+					<td valign="bottom"><h:outputLabel id="updateDate">#{customerController.customer.updateDate}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">insertDate:</td>
+					<td valign="bottom"><h:outputLabel id="insertDate">#{customerController.customer.insertDate}</h:outputLabel>
+					</td>
+				</tr>
+				<tr>
+					<td width="100" valign="top">customerPhone:</td>
+					<td valign="bottom"><h:outputLabel id="customerPhone">#{customerController.customer.customerPhone}</h:outputLabel>
+					</td>
+				</tr>
+
+				  
+				
+			</table>
+			<h:link id="close" value="Close" outcome="index.xhtml"
+				class="btn btn-primary" />
+
+		</h:form>
+	</div>
+</h:body>
+</html>

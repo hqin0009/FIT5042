@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+        <title>#{titleController.pageTitle}</title> 
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    #{titleController.pageTitle} - Add Customer
+                </div>
+            </div>
+            <div>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create"/></h1>
+                
+                <table class="table table-bordered ">
+                    <tr class="#{!customerName.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="customerName" for="customerName" />
+                        </td>
+                        <td>
+                            <h:inputText id="customerName" value="#{customer.customerName}" title="customerName" required="true" requiredMessage="Please enter the customer Name!" pt:placeholder="Andy"/>
+                            <br/>
+                            <h:message for="customerName" class="#{!customerName.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    
+                    </tr>
+                   
+
+                    <tr class="#{!customerAddress.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="customerAddress" for="customerAddress" />
+                        </td>
+                        <td>
+                            <h:inputText id="customerAddress" value="#{customer.customerAddress}" title="customerAddress" required="true" requiredMessage="Please enter the customer address!" pt:placeholder="Dandenong Rd"/>
+                            <br/>
+                            <h:message for="customerAddress" class="#{!customerAddress.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    
+                    </tr>
+        		
+
+                    
+                     <tr class="#{!customerPhone.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="customerPhone" for="customerPhone" />
+                        </td>
+                        <td>
+                            <h:inputText id="customerPhone" value="#{customer.customerPhone}" title="customerPhone" converterMessage="Please enter number as phone number">  
+                        	<f:convertNumber integerOnly="true"/>
+                            </h:inputText>
+                        </td>
+                    
+                    </tr>
+                     <tr class="#{!creatorId.valid ? 'has-error' : 'none'}">
+                        <td width ="200">
+                            <h:outputLabel value="creatorId" for="creatorId" />
+                        </td>
+                        <td>
+                            <h:inputText id="creatorId" value="#{customer.creatorId}" title="customerNumber" required="true" requiredMessage="Please enter the creatorId!" validatorMessage="Please enter creatorId" converterMessage="Please enter a number as creatorId" pt:placeholder="900">
+	                            <f:convertNumber integerOnly="true"/>
+								<f:validateLongRange minimum="1" maximum="1000" /> 
+							</h:inputText>
+                            <br/>
+                            <h:message for="creatorId" class="#{!creatorId.valid ? 'label label-warning' : 'none'}" />
+                        </td>
+                    </tr>
+                    
+                    <tr class="#{!customerTypeId.valid ? 'has-error' : 'none'}">
+                        <td>
+                            <h:outputLabel value="customerTypeId" for="customerTypeId" />
+                        </td>
+                        <td>
+                            <h:inputText id="customerTypeId" value="#{customer.customerTypeId}" required="true" requiredMessage="Please enter the existing CustomerTypeId! 1 to 8" converterMessage="Please enter a number as CustomerTypeId" >  
+                        	<f:convertNumber integerOnly="true"/>
+                        	</h:inputText>
+                        </td>
+                    
+                    </tr>
+                </table>
+                
+                <h:commandButton id="submit" value="Submit" action="#{addCustomer.addCustomer(customer)}" class="btn btn-primary" >
+                </h:commandButton>
+                <h:link id="close" value="Close" outcome="index.xhtml"
+						class="btn btn-primary" />
+            	
+            </h:form>
+			
+        </f:view>
+            </div>
+        </div>
+       
+    </h:body>
+</html>
+

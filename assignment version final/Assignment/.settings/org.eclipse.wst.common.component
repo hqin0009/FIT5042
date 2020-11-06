@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Assignment">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="W6ExeCM-common.jar" deploy-path="/lib" handle="module:/resource/W6ExeCM-common/W6ExeCM-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="W6ExeCM-ejb.jar" deploy-path="/" handle="module:/resource/W6ExeCM-ejb/W6ExeCM-ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="W6ExeCM-war.war" deploy-path="/" handle="module:/resource/W6ExeCM-war/W6ExeCM-war">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
